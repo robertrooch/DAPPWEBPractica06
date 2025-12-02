@@ -39,10 +39,6 @@ public class LoginBean implements Serializable {
         this.loggedIn = loggedIn;
     }
 
-    /**
-     * Método para procesar el inicio de sesión.
-     * @return La página a la que se redirigirá.
-     */
     public String login() {
         if ("admin".equals(username) && "1234".equals(password)) {
             this.loggedIn = true;
@@ -59,18 +55,11 @@ public class LoginBean implements Serializable {
         }
     }
 
-    /**
-     * Método para cerrar la sesión.
-     * @return La página de login.
-     */
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/login.xhtml?faces-redirect=true";
     }
 
-    /**
-     * Método de utilidad para mostrar mensajes en la vista.
-     */
     private void addMessage(FacesMessage.Severity severity, String summary, String detail) {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(severity, summary, detail));
     }
